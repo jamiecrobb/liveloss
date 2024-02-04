@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from IPython.display import display, clear_output
-import numpy as np
+import matplotlib.ticker as ticker
 
 
 class LiveLoss:
@@ -11,11 +11,13 @@ class LiveLoss:
         self.line.set_data(self.xs, self.ys)
         self.ax.relim()
         self.ax.autoscale_view()
+        self.ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
 
     def update(self):
         self.line.set_data(self.xs, self.ys)
         self.ax.relim()
         self.ax.autoscale_view()
+        self.ax.set_title('Loss for each Epoch')
         clear_output(wait=True)
         display(self.fig)
 
